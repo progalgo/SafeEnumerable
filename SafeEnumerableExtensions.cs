@@ -13,7 +13,7 @@ namespace SafeEnumerable
             }
             catch (Exception e)
             {
-                return !(e is InvalidOperationException)
+                return !(e is InvalidOperationException);
             }
         }
 
