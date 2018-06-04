@@ -13,14 +13,7 @@ namespace SafeEnumerable
             }
             catch (Exception e)
             {
-                if (e is InvalidOperationException)
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
+                return !(e is InvalidOperationException)
             }
         }
 
@@ -28,12 +21,9 @@ namespace SafeEnumerable
         {
             var enumerator = enumerable.GetEnumerator();
 
-            bool more = enumerator.MoveNextSafely();
-
-            while (more)
+            while (enumerator.MoveNextSafely())
             {
                 yield return enumerator.Current;
-                more = enumerator.MoveNextSafely();
             }
         }
     }
