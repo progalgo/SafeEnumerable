@@ -28,12 +28,12 @@ namespace SafeEnumerable
         {
             var enumerator = enumerable.GetEnumerator();
 
-            bool end = enumerator.MoveNextSafely();
+            bool more = enumerator.MoveNextSafely();
 
-            while (!end)
+            while (more)
             {
                 yield return enumerator.Current;
-                end = enumerator.MoveNextSafely();
+                more = enumerator.MoveNextSafely();
             }
         }
     }
